@@ -1,15 +1,39 @@
 import { PrismaClient } from '@prisma/client'
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
 
 const prisma = new PrismaClient()
 
 async function main() {
+    // await createUserAndPost()
     retrieveUsers()
     
 }
 
+async function createUserAndPost() {
+    const user1 = await prisma.user.create({
+        data: {
+            name: 'gil2',
+            email: 'g3@hotm.com',
+            posts: {
+                create: {
+                    title: 'The story of Sleep',
+                    content: 'Ababax was a small village that got destroyed',
+                    published: true,
+                }
+            }
+        }
+    })
+    console.log(user1)
+}
+
 async function retrieveUsers() {
-    const users = await prisma.user.findMany()
-    console.log(users)
+    const users = await prisma.user.findMany({
+        include: {
+            _count: true,
+            posts: true
+        }
+    })
+    console.dir(users, { depth: null })
 }
 
 async function createUser() {
@@ -32,7 +56,7 @@ main()
     .then(async () => {
         await prisma.$disconnect()
     })
-    .catch(async e => {
+    .catch(async (e) => {
         console.error(e)
         await prisma.$disconnect()
         process.exit(1)
