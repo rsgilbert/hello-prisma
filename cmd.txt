@@ -1,0 +1,12 @@
+// initialize typescript project
+npm init -y;npm i typescript ts-node @types/node --save-dev
+
+// initialize typescript
+npx tsc --init 
+
+// initialize prisma cli 
+npm i prisma --save-dev 
+
+
+
+
