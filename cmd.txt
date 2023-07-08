@@ -17,3 +17,8 @@ npx prisma migrate dev --name init
 
 // run a sample script 
 npx ts-node scripts.ts 
+
+// open gui studio
+npx prisma studio 
+
+

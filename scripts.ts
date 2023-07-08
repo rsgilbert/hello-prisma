@@ -4,7 +4,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
 const prisma = new PrismaClient()
 
 async function main() {
-    // await createUserAndPost()
+    await createUserAndPost()
     retrieveUsers()
     
 }
@@ -13,11 +13,11 @@ async function createUserAndPost() {
     const user1 = await prisma.user.create({
         data: {
             name: 'gil2',
-            email: 'g3@hotm.com',
+            email: 'g4@hotm.com',
             posts: {
                 create: {
-                    title: 'The story of Sleep',
-                    content: 'Ababax was a small village that got destroyed',
+                    title: 'Another story of Sleep',
+                    content: 'Sleepy hollow was a small village that got destroyed',
                     published: true,
                 }
             }
