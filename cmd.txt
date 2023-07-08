@@ -10,5 +10,8 @@ npm i prisma --save-dev
 // setup prisma targeting sqlite
 npx prisma init --datasource-provider sqlite
 
+// create database and tables using prisma cli
+npx prisma migrate dev --name init
+
 
 
